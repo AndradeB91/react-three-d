@@ -8,7 +8,7 @@ function Ground ({ length }) {
   }))
 
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]}>
+    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
       <circleBufferGeometry attach="geometry" args={[length, length]} />
       <meshLambertMaterial attach="material" color="lightblue" />
     </mesh>
@@ -16,7 +16,7 @@ function Ground ({ length }) {
 }
 
 Ground.propTypes = {
-  length: PropTypes.string.isRequired
+  length: PropTypes.number.isRequired
 }
 
 export default React.memo(Ground)

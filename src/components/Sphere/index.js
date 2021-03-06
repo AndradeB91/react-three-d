@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useBox } from '@react-three/cannon'
+import { useSphere } from '@react-three/cannon'
 
-function Box ({ position, mass, args, ...props }) {
-  const [ref, api] = useBox(() => ({ mass, args, position }))
+function Sphere ({ position, mass, args, ...props }) {
+  const [ref, api] = useSphere(() => ({ mass, args, position }))
   return (
     <mesh
       castShadow
@@ -14,20 +14,20 @@ function Box ({ position, mass, args, ...props }) {
       ref={ref}
       position={position}
     >
-      <boxBufferGeometry
+      <sphereBufferGeometry
         attach="geometry"
         args={args}
         {...props}
       />
-      <meshLambertMaterial attach="material" color="hotpink" />
+      <meshLambertMaterial attach="material" color="#3f88a0" />
     </mesh>
   )
 }
 
-Box.propTypes = {
+Sphere.propTypes = {
   position: PropTypes.arrayOf(Number).isRequired,
-  args: PropTypes.arrayOf(Number).isRequired,
+  args: PropTypes.number.isRequired,
   mass: PropTypes.number
 }
 
-export default React.memo(Box)
+export default React.memo(Sphere)
